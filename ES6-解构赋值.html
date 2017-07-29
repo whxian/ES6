@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>解构赋值</title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				border: 1px solid #000;
+				margin: 10px;
+				padding: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<script src="../../jquery-3.2.1.min.js"></script>
+		<script>
+	/*
+		解构赋值：
+	 			ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构
+	 * */
+//		var a = 10;
+//		var b = 20;
+//		var [b,a] = [a,b];
+//		console.log(a,b);	//20,10
+		
+		//小技巧：保持左边格式和右边格式一致，就能解构右边的
+//		let [foo,[[bar],baz]] = [1,[[2],3]];
+//		console.log(foo,bar,baz);
+//		
+//		let [,,third] = ["foo","bar","baz"];
+//		console.log(third);	//baz
+		
+		//y和z右边没有对应的值，所以为undefined
+//		let [x,y,z] = ['a'];
+//		console.log(z);	//undefined
+//		let h = 5;
+//		console.log(x);	//a
+		
+//		let [foo] = [];
+//		let [bar,foo] = [1];	//名字不要取一样的，不然会报错
+
+		//如果使用下面这种方式去解构，右边值必须为[]，不然就会报错
+//		let [foo] = 1;
+//		let [foo] = false;
+//		let [foo] = NaN;
+//		let [foo] = undefined;
+//		let [foo] = {};
+//		let [foo] = [1];		//不会报错
+		
+		//解构赋值允许指定默认值
+			//遵循有配置走配置，无配置走默认
+//		let [a=10,b] = [1,2];	console.log(a);	//1
+//		let [a=10,b] = [,2];		console.log(a);	//10
+
+		//右边如果木有值，那么如果左边为解构变量并且使用let时，找不到这个变量，就会报错
+		//只要右边有值，使用let声明的时候，左边就不会报错
+		//而var已经预解析了
+//		let [x = y,y = 1] = [];	console.log(x);	//报错
+//		var [x = y,y = 1] = [];	console.log(x);	//undefined
+
+//		let [x = y,y = 1] = [];	console.log(y);	//报错
+//		var [x = y,y = 1] = [];	console.log(y);	//1
+
+//		let y = 5;
+//		let [x = y] = [];
+//		console.log(x);	//5
+		
+		//当右边有值，左边就走右边的值
+		//当右边没有值，就看左边有没有'='，如果有，就走'='的值（这个值不能是全局没有定义过的变量），如果没有，就为undefined
+//		let [x = 1,y] = [,5];
+//		console.log(x);	//1
+//		
+//		let [x,y] = [,5];
+//		console.log(x);	//undefined
+//		
+//		let [x = y,y] = [,5];
+//		console.log(x);	//报错
+
+//		let [x = fn()] = [1];
+//		console.log(x);	//1
+
+//		function fn () {
+//			console.log('aaa')
+//		}
+//		let [x = fn()] = [];	//aaa
+//		console.log(x);	//undefined
+		
+//		let [x = fn()] = [null];
+//		console.log(x);	//null
+
+//		let arr = [1,2,3,4,[[[['a'],'b'],['c']]]];
+//		let [,,,num,[[[[a],b],[c]]]] = arr;
+//		console.log(arr);	
+
+		//如果右边是对象，左边也有用{}包裹，直接找对应的属性名即可
+		//如果变量名要修改，那么：新的变量名
+		
+//		let {x,y} = {a:1,b:2};
+//		console.log(x,y);	//undefined undefined
+//		let {b:x,a:y} = {a:1,b:2};
+//		console.log(x,y);	//2 1
+
+		//当右边有undefined时，左边有赋值，就走左边的赋值
+//		let [x=y,y] = [undefined,5];
+//		console.log(x,y);	//报错
+		
+		var div = document.getElementsByTagName('div')[0];
+		let {width:w,height:h,border:b} = getComputedStyle(div);
+		console.log(w,h,b);
+		
+		
+//面试题：使用解构赋值将下列数字放到同一个数组中 
+//let obj = {
+//	a:{
+//		b:[
+//			[1,2,3],
+//			['a','b','c',{d:7}]
+//		]
+//	}
+//}
+//let {
+//	a:{
+//		b:[
+//			c,
+//			[v,m,k,{d:f}]
+//		]
+//	}
+//} = obj;
+//c.push(f);
+//console.log(c);
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>对象</title>
+</head>
+<body>
+<script src="../../jquery-3.2.1.min.js"></script>
+<script>
+//	var {x:y = 3} = {x:5};
+	//	console.log(y);	//5
+	//
+	//	var {x:y = 3} = {};
+	//	console.log(y);	//3
+			
+//		let {x,y = 5} = {x:1};
+//		console.log(x,y);	//1 5
+		
+		//如果左边有默认设置，右边为undefined或者没有值，那么就走默认，别的都走配置
+//		var {x = 3} = {x:undefined};
+//		var {x = 3} = {x:null};
+//		var [x = 3] = [undefined];
+//		console.log(x);	//3
+
+
+
+	/*
+		如果数组与对象嵌套，那么直接把右边的值复制过来，换成变量名即可。 
+	*/
+	let obj = {
+	  p: [
+	    'Hello',
+	    { y: 'World' }
+	  ]
+	};
+	let { p: [x, { y }] } = obj;
+	
+	console.log(x,y)
+</script>
+</body>
+</html>

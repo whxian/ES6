@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>数组扩展</title>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script src="../../jquery-3.2.1.min.js"></script>
+	<script>
+/*
+	
+	Array.from()
+	Array.of()
+	数组实例的 copyWithin()
+	数组实例的 find() 和 findIndex()
+	数组实例的fill()
+	数组实例的 entries()，keys() 和 values()
+	数组实例的 includes()
+	数组的空位
+
+ * */
+//扩展运算符(...): 它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。
+	console.log(...[1, 2, 3]);	// 1 2 3
+	console.log(1, ...[2, 3, 4], 5);	// 1 2 3 4 5
+	console.log([...document.querySelectorAll('div')]);	// [<div>, <div>, <div>]
+	
+	function push(array, ...items) {
+	  array.push(...items);
+	}	
+	function add(x, y) {
+	  return x + y;
+	}	
+	var numbers = [4, 38];
+	console.log(add(...numbers)) // 42
+	
+	//数组去重
+	var arr = [1,2,3,3,2,1,4,5,6,7,3];
+	console.log([...new Set(arr)]);
+	
+	//扩展运算符还可以将字符串转为真正的数组
+	console.log([...'hello']);
+//Array.from：将类数组转为真正的数组
+	let arrayLike = {
+	    '0': 'a',
+	    '1': 'b',
+	    '2': 'c',
+	    length: 3
+	};
+	//ES5写法
+	var arr1 = [].slice.call(arrayLike);
+	console.log(arr1); // ['a', 'b', 'c']
+	//ES6写法
+	let arr2 = Array.from(arrayLike);
+	console.log(arr2); // ['a', 'b', 'c']
+//Array.of：用于将一组值，转换为数组。
+	
+	console.log(Array()); // []
+	console.log(Array(3)); // [undefined,undefined,undefined]
+	console.log(Array(3, 11, 8)); // [3, 11, 8]
+	
+	console.log(Array.of(3, 11, 8)); // [3,11,8]
+	console.log(Array.of(3)); // [3]
+	console.log(Array.of(3).length); // 1
+	
+	var arr3 = [1,2,3,4,5,6,7];
+	console.log(arr3.findIndex(e => (e==6)));	//5（6出现的位置）
+	console.log(arr3.indexOf(6));	//5（6出现的位置）
+	
+	console.log(arr3.find(e => (e*2 >= 6)));		//3（找出数组中第一个 值*2>=6 的数字）
+	console.log(arr3.filter(e => (e*2 >= 6)));	//[3,4,5,6,7]（找出数组中每一个个 值*2>=6 的数字）
+	
+/*面试题：
+	找出下列数组中的最大差值
+*/
+	var arr4 = [1,2,3,4,5,6,22,88];
+	console.log(Math.max.apply(null,arr4) - Math.min.apply(null,arr4));
+	
+//遍历数组：entries()，keys() 和 values()
+//返回一个遍历器对象，可以用for...of循环进行遍历，唯一的区别是keys()是对键名的遍历、values()是对键值的遍历，entries()是对键值对的遍历。
+
+for (let index of ['a', 'b'].keys()) {
+  console.log(index);
+}
+// 0
+// 1
+
+//for (let elem of ['a', 'b'].values()) {
+//console.log(elem);		//虽然文档上有，但事实‘报错’
+//}
+// 'a'
+// 'b'
+
+for (let [index, elem] of ['a', 'b'].entries()) {
+  console.log(index, elem);
+}
+// 0 "a"
+// 1 "b"
+
+//如果不使用for...of循环，可以手动调用遍历器对象的next方法，进行遍历。
+
+let letter = ['a', 'b', 'c'];
+let entries = letter.entries();
+console.log(entries.next().value); // [0, 'a']
+console.log(entries.next().value); // [1, 'b']
+console.log(entries.next().value); // [2, 'c']
+	</script>
+</body>
+</html>

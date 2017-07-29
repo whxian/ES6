@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>遍历器：Symbol(Symbol.iterator)</title>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script src="../../jquery-3.2.1.min.js"></script>
+	<script>
+/*
+Symbol(Symbol.iterator)：遍历器（只要有遍历器就可以使用for…in）
+	obj[Symbol.iterator] = function () {
+		//遍历函数
+		return {
+			next(){
+				return {
+					value:xxx,
+					done:boolean（如果是false要循环，true终止循环）
+				}
+			}
+		}
+	}
+ * */
+	var obj = {name:'xxx',age:18};
+//	console.log(Object.keys(obj))
+	obj[Symbol.iterator] = function () {
+		let arr = Object.keys(obj);
+		let len = arr.length;
+		let i =0;
+		return {
+			next(){
+				if(i < len){
+					return {
+						value:{
+							key:arr[i],
+							val:obj[arr[i++]]
+						},
+						done:false
+					}
+				}else{
+					return {
+						value:null,
+						done:true
+					}
+				}
+			}
+		}
+	}
+	for (var {val,key} of obj) {
+		console.log(key,val)
+	}
+//	console.dir(obj);
+
+	</script>
+</body>
+</html>

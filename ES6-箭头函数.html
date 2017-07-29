@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>箭头函数</title>
+	</head>
+	<body>
+		<script src="../../jquery-3.2.1.min.js"></script>
+		<script>
+/*
+	箭头函数：
+
+		function fn () {
+			alert(1);	
+		}
+		ES6:
+		function fn () => {
+			alert(1);
+		}
+		
+	 
+	变量：可变
+		var
+		let：
+			1.没有预解析,声明变量之前调用不会出现undefined,而是报错
+			2.使用let不会在window下注册
+			3.使用let变量名不允许重复，否则报错
+			4.一个块就相当于一个作用域，子集可以访问父级，父级不可以访问子集
+			5.在某些情况下可以替代索引
+			
+		//1.没有预解析,声明变量之前调用不会出现undefined,而是报错
+			alert(a);//报错
+			let a = 10;
+		//2.使用let不会在window下注册
+			let a = 10;
+			function fn () {
+				alert(window.a);//undefined
+			}
+			fn();
+		
+			var a = 10;
+			function fn () {
+				alert(window.a);//10
+			}
+			fn();
+		//3.使用let变量名不允许重复，否则报错
+			let a = 10;
+			var a = 20;
+			function fn () {
+				alert(window.a);//10
+			}
+			fn();
+		//4.一个块就相当于一个作用域，子集可以访问父级，父级不可以访问子集
+			//块{}
+			{
+				let a = 10;//报错
+			}
+			alert(a)
+
+			{
+				let a = 10;
+				{
+					alert(a)//10
+				}
+			}
+		//5.在某些情况下可以替代索引
+		
+		
+		
+	//常量：不可变
+		const：声明后必须赋值，否则报错
+				某些值仅仅是使用,不改变的话就用const
+		const a;
+		alert(a);//报错
+*/
+		</script>
+	</body>
+</html>

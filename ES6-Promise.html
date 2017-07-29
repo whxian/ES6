@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Promise</title>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script src="../../jquery-3.2.1.min.js"></script>
+	<script>
+/*
+	Promise：异步编程的一种解决方案
+		2个特点：
+			1.三种状态：Pending：进行中
+					   Resolved：已完成，又称Fulfiled
+					   Rejected：已失败
+			2.一旦状态改变，就不会在变，任何时候都可以得到这个结果
+ * */
+//	var a = null;
+//	setTimeout(function () {
+//		a = 10;
+//		console.log(a);	//10
+//	},1000)
+//	console.log(a);	//null
+	
+	var p = new Promise(function (success,error) {
+		setTimeout(function () {
+			a = 10;
+			if (a) {
+				success(a);
+			} else{
+				error('失败')
+			}
+		},1000)		
+	});
+	p.then(function (value) {
+		alert(value);
+	}),function (val) {
+		alert(val);
+	}
+	
+	
+	</script>
+</body>
+</html>

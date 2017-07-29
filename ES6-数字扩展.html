@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>数字扩展</title>
+</head>
+<body>
+	<script src="../../jquery-3.2.1.min.js"></script>
+	<script>
+/*
+双曲函数方法
+	ES6新增了6个双曲函数方法。
+	
+	Math.sinh(x) 返回x的双曲正弦（hyperbolic sine）
+	Math.cosh(x) 返回x的双曲余弦（hyperbolic cosine）
+	Math.tanh(x) 返回x的双曲正切（hyperbolic tangent）
+	Math.asinh(x) 返回x的反双曲正弦（inverse hyperbolic sine）
+	Math.acosh(x) 返回x的反双曲余弦（inverse hyperbolic cosine）
+	Math.atanh(x) 返回x的反双曲正切（inverse hyperbolic tangent）
+	
+
+ * */
+/*
+Number.isNaN()
+	与isNAN区别：
+			Number.isNaN不会通过Number去转，括号中的条件必须满足NaN才会是true
+			
+ * */
+console.log(isNaN('NaN'));	//true
+console.log(Number('NaN'));	//NAN
+console.log(Number.isNaN('NaN'));	//false
+console.log(Number.isNaN(NaN));	//true
+console.log(Number.isNaN({}));	//false
+console.log(isNaN({}));	//true
+
+//计算机处理数字的最大值，超过就为Infinite
+console.log(Number.MAX_VALUE);
+
+//抹小数部分，返回整数部分
+console.log(Math.trunc(4.1)); //4
+//在正数范围内，= floor（向下取整）
+console.log(Math.floor(4.1)); //4
+console.log(Math.floor(-4.1)); //5
+
+//Math.cbrt():立方根
+console.log(Math.cbrt(0));	//0
+console.log(Math.cbrt(1));	//1
+console.log(Math.cbrt(-1));	//-1
+
+//指数运算符（**）
+	let a = 2;
+	console.log(a **= 2);	//2 * 2 = 4
+	// 等同于 a = a * a;
+	
+	let b = 3;
+	console.log(b **= 3);	//3 * 3 * 3 = 27
+	// 等同于 b = b * b * b;
+	
+	//注意，在 V8 引擎中，指数运算符与Math.pow的实现不相同，对于特别大的运算结果，两者会有细微的差异。
+	console.log(Math.pow(99,99));	// 3.697296376497263e+197
+	console.log(99 ** 99);	// 3.697296376497268e+197
+	</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ES6</title>
+	</head>
+	<body>
+		<script src="../../jquery-3.2.1.min.js"></script>
+		<script>
+/*
+ 	ECMAScript 2015（简称ES2015）
+ 		ES6：ECMAScript 6[跨时代版本]
+ 		ES6既是一个历史名词，也是一个泛指，含义是5.1
+ 		
+
+//1
+	{
+		name:name,
+		age:age
+	}
+	ES6:
+	{
+		name,
+		age
+	}
+	 
+//2
+	{
+		fn:function(){},
+		age:age
+	}
+	ES6:
+	{
+		fn(){
+			
+		},
+		age
+	}
+//3
+	class 类名 {
+		constructor(name,age){
+			属性放在constructor里面
+		}
+		
+		say(){
+			方法放在类中即可。
+		}
+	}
+	
+	注意：
+		如果使用class的方式写类，那么类的prototype是不能被改写的
+		
+		Person.prototype = {
+			
+		}
+		
+	继承：
+		class 子类 extends 父类 {
+			constructor(name,age,job){
+				super(name,age);
+			}
+			
+			kuangfu(){
+				//子类自己的方法
+			}
+			
+		}
+		
+	注意：
+		如果要添加子类自己的属性，那么需要把属性放在super()下面
+		不然会报错。
+
+		</script>
+	</body>
+</html>

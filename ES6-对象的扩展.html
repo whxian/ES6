@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>对象的扩展</title>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script src="../../jquery-3.2.1.min.js"></script>
+	<script>
+/*
+
+ * */
+	let settings = {
+		name:'小明',
+		age:16
+	};
+	let obj = {
+		age:18
+	}
+	//有配置走配置，没配置走默认
+	var o = Object.assign(settings,obj);
+	console.log(o)
+	/*
+	1.有配置走配置，没配置走默认
+	2.浅拷贝
+	2.深拷贝
+	 */
+	var o2 = $.extend({},settings,obj);	//1.有配置走配置，没配置走默认
+	console.log(o2)
+	
+	var arr = [1,2,3,4,[5]];
+	var arr2 = $.extend([],arr);		//2.浅拷贝（拷贝一层）
+	var arr2 = $.extend(true,[],arr);	//3.深拷贝
+	$.extend();		//4.
+	$.extend(); 		//5.
+	
+	
+	</script>
+</body>
+</html>

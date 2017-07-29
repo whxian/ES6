@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Generator</title>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script src="../../jquery-3.2.1.min.js"></script>
+	<script>
+/*
+Generator：异步编程解决方案
+	正常函数只能返回一个值，而Generator函数可以返回一系列值
+	当调用Generator函数的时候，函数内代码并不会执行，而当调用next()时候才会执行
+	
+**注意**：yield表达式只能在Generator函数内，否则报错
+ * */
+	function *fn () {
+		alert(1);
+		//使用yield会继续等待next调用（done: false）
+		//使用return会终止整个函数（done: true）
+		//内部如果有多个return，只会执行1个，剩下的都为undefined
+		yield 'hello';
+		yield '世界';
+		return 'end';
+	}
+	var hw = fn();	//并不弹1
+	console.log(hw.next());	//弹1,value: "hello", done: false
+	console.log(hw.next());	//弹1,value: "世界", done: false
+	console.log(hw.next());	//弹1,value: "end", done: true
+	console.log(hw.next());	//弹1,value: undefined, done: true
+	
+	</script>
+</body>
+</html>
